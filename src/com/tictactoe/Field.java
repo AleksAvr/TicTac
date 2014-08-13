@@ -14,15 +14,18 @@ public class Field {
 
     private final char[][] field ; //final т.к. не будем менять тип и пр.пр.
 
+
     public Field(){
         this(DEFAULT_FIELD_SIZE);
-        System.out.println("In constructor");
+        //System.out.println("In constructor");
     }
 
     public Field(int size){
+        super();
         fieldSize = size;
         field = new char[fieldSize][fieldSize];
     }
+
 
     public int getFieldSize(){
         return fieldSize;
@@ -58,5 +61,50 @@ public class Field {
     private void showCell(int x, int y){
         System.out.print("[" + field[x][y] + "]");
     }
+
+
+    public void setValue(){ // test
+        field [0][0] = 'X';
+        field [1][0] = 'X';
+        field [2][0] = 'X';
+    }
+
+    public char getValue(){ //test
+        return field [0][0];
+
+    }
+
+    private boolean checkCell(char l, int i, int j){
+            if (field[i][j] == l){
+            return true;
+            } else {
+                return false;
+            }
+    }
+
+    public boolean checkColumn(char l, int columnNumber){ // не забыть поменять на private
+
+        boolean checkVictory = false;
+
+        for (int i = 0; i < fieldSize; i++ ) {
+            if (checkCell(l, i, columnNumber) == true){
+                 checkVictory = true;
+            }  else  {
+                System.out.println("NOT Glory to X ");
+                return checkVictory = false;
+            }
+        }
+
+        System.out.println("Glory to X ");
+        return checkVictory;
+    }
+
+    private void checkLine(char l,int lineNumber){
+        for (int j = 0; j < fieldSize; j++){
+            if (checkCell(l,lineNumber, j) == true);
+
+        }
+    }
+
 
 }
